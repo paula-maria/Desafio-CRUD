@@ -1,8 +1,7 @@
 # Desafio - CRUD
 
 # CRUD de Produtos 
-
-Este projeto é um CRUD simples de produtos desenvolvido com **Node.js**, **Express** e **SQLite**.
+Este projeto foi desenvolvido como parte do **Desafio CRUD**, implementando um sistema completo de **cadastro, listagem, atualização, exclusão e pesquisa** de produtos desenvolvido com **Node.js**, **Express** e **SQLite**. 
 
 ## Tecnologias
 - Node.js

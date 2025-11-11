@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD de Produtos</title>
+
+  <!-- Biblioteca XLSX (necessária para exportar para Excel) -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --azul: #1e3a8a;
+      --azul-hover: #1d4ed8;
+      --cinza-bg: #f4f6f8;
+      --cinza-card: #ffffff;
+      --texto: #2d3748;
+      --verde: #16a34a;
+      --verde-hover: #15803d;
+      --vermelho: #dc2626;
+      --vermelho-hover: #b91c1c;
+      --cinza-borda: #e2e8f0;
+      --azul-export: #0ea5e9;
+      --azul-export-hover: #0284c7;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background-color: var(--cinza-bg);
+      color: var(--texto);
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--cinza-card);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--azul);
+      margin-bottom: 40px;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .form-section {
+      background: #f8fafc;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+      border: 1px solid var(--cinza-borda);
+    }
+
+    .form-section h2 {
+      font-size: 1.25rem;
+      color: var(--azul);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      font-size: 14px;
+      background: #fff;
+      transition: border-color 0.2s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--azul-hover);
+      outline: none;
+    }
+
+    textarea {
+      height: 80px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 10px 18px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 600;
+    }
+
+    #submitBtn {
+      background-color: var(--azul);
+      color: white;
+    }
+
+    #submitBtn:hover {
+      background-color: var(--azul-hover);
+    }
+
+    button.secondary {
+      background: var(--verde);
+      color: white;
+    }
+
+    button.secondary:hover {
+      background: var(--verde-hover);
+    }
+
+    button.delete {
+      background: var(--vermelho);
+      color: white;
+    }
+
+    button.delete:hover {
+      background: var(--vermelho-hover);
+    }
+
+    button.export {
+      background: var(--azul-export);
+      color: white;
+    }
+
+    button.export:hover {
+      background: var(--azul-export-hover);
+    }
+
+    #cancelBtn {
+      margin-left: 10px;
+      background: #6b7280;
+      color: white;
+    }
+
+    #cancelBtn:hover {
+      background: #4b5563;
+    }
+
+    .message {
+      padding: 12px;
+      margin: 15px 0;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .success {
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
+    }
+
+    .error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .search-section {
+      margin-bottom: 20px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .search-box input:focus {
+      border-color: var(--azul-hover);
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 15px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e2e8f0;
+      font-weight: 600;
+      color: #1e293b;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    tr:hover {
+      background-color: #f9fafb;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #6b7280;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gerenciador de Produtos</h1>
+
+    <div id="message" class="message hidden"></div>
+
+    <!-- Formulário -->
+    <div class="form-section">
+      <h2 id="form-title">Cadastrar Produto</h2>
+      <form id="produtoForm">
+        <input type="hidden" id="produtoId" />
+
+        <div class="form-group">
+          <label for="nome">Nome do Produto *</label>
+          <input type="text" id="nome" required />
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="preco">Preço (R$) *</label>
+          <input type="number" id="preco" step="0.01" min="0" required />
+        </div>
+
+        <div class="form-group">
+          <label for="quantidade">Quantidade *</label>
+          <input type="number" id="quantidade" min="0" required />
+        </div>
+
+        <button type="submit" id="submitBtn">Salvar</button>
+        <button type="button" id="cancelBtn" class="hidden">Cancelar</button>
+      </form>
+    </div>
+
+    <!-- Pesquisa + Exportação -->
+    <div class="search-section">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Pesquisar produtos..." />
+        <button onclick="pesquisarProdutos()" class="secondary">Pesquisar</button>
+        <button onclick="listarProdutos()" class="secondary">Limpar</button>
+        <button onclick="exportarExcel()" class="export">Exportar para Excel</button>
+      </div>
+    </div>
+
+    <!-- Tabela -->
+    <div class="table-container">
+      <table id="produtosTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="produtosBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 - Sistema de Controle de Produtos
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

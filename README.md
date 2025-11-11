@@ -34,8 +34,7 @@ Antes de iniciar, certifique-se de ter instalado:
 
 ### Clonar o repositório
 
-```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/seu-usuario/Desafio-CRUD.git
 
 ## Com isso, abra o terminal do VSCode e execute os seguintes comandos:
 
@@ -44,10 +43,11 @@ git clone https://github.com/seu-usuario/nome-do-repositorio.git
 3. npm run dev
 ## Ao digitar esse último comando, o terminal irá fornecer essas informações:
 <img width="342" height="207" alt="image" src="https://github.com/user-attachments/assets/f752b064-e1bb-42fb-a7b6-5336365b0774" />
+
 ## Então, será possível acessar o projeto através do link: http://localhost:3000
 
 ## ESTRUTURA DO PROJETO
-📦 nome-do-repositorio
+📦 Desafio-CRUD
  ┣ 📂 public
  ┃ ┣ 📜 index.html
  ┃ ┣ 📜 style.css

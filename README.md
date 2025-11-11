@@ -76,21 +76,30 @@ Antes de iniciar, certifique-se de ter instalado:
 - [Git](https://git-scm.com/) (opcional, para clonar o repositório)
 - Nenhuma instalação adicional de banco de dados é necessária, pois o **SQLite** é leve e embutido.
 
-**Clonar o repositório**
+**Com isso, abra o terminal do VSCode e execute os seguintes comandos:**
 
-git clone (https://github.com/paula-maria/Desafio-CRUD.git)
+1 — Clonar o repositório. No terminal (PowerShell, Git Bash ou terminal do VS Code):
+git clone https://github.com/paula-maria/Desafio-CRUD.git
 
-Com isso, abra o terminal do VSCode e execute os seguintes comandos:
+2. digite: cd Desafio-CRUD
 
-1. cd desafio CRUD
-2. npm instal (para instalar as dependências)
-3. npm run dev
+3. Instalar dependências. Rode: npm install 
+Esse comando instalará as dependências listadas em package.json (por exemplo: express, sqlite3, cors, nodemon, etc.).
+Se prefirir instalar tudo manualmente: npm install express sqlite3
+
+4. No terminal, rode o comando: npm run dev
+
 ## Ao digitar esse último comando, o terminal irá fornecer essas informações:
 <img width="342" height="207" alt="image" src="https://github.com/user-attachments/assets/f752b064-e1bb-42fb-a7b6-5336365b0774" />
 
 **Então, será possível acessar o projeto através do link: http://localhost:3000**
 
+No entanto, se preferir sem nodemon:
+npm start
+# ou
+node server.js
 
+Em seguida abra: http://localhost:3000
 
 **Estrutura do projeto**
 

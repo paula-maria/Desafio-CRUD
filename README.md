@@ -39,7 +39,7 @@ git clone https://github.com/seu-usuario/Desafio-CRUD.git
 ## Com isso, abra o terminal do VSCode e execute os seguintes comandos:
 
 1. cd desafio
-2. nppm instal
+2. nppm instal (para instalar as dependências)
 3. npm run dev
 ## Ao digitar esse último comando, o terminal irá fornecer essas informações:
 <img width="342" height="207" alt="image" src="https://github.com/user-attachments/assets/f752b064-e1bb-42fb-a7b6-5336365b0774" />

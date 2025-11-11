@@ -78,7 +78,7 @@ Antes de iniciar, certifique-se de ter instalado:
 
 **Clonar o repositório**
 
-git clone https://github.com/seu-usuario/Desafio-CRUD.git
+git clone (https://github.com/paula-maria/Desafio-CRUD.git)
 
 Com isso, abra o terminal do VSCode e execute os seguintes comandos:
 

@@ -96,12 +96,12 @@ Se prefirir instalar tudo manualmente: npm install express sqlite3
 
 No entanto, se preferir sem nodemon:
 npm start
-# ou
+ou
 node server.js
 
 Em seguida abra: http://localhost:3000
 
-**Estrutura do projeto**
+# Estrutura do projeto
 
  
 <img width="557" height="390" alt="image" src="https://github.com/user-attachments/assets/b693c2d3-770e-46f5-91f3-857dfbe79bf8" />

@@ -82,7 +82,7 @@ git clone https://github.com/seu-usuario/Desafio-CRUD.git
 
 Com isso, abra o terminal do VSCode e execute os seguintes comandos:
 
-1. cd desafio
+1. cd desafio CRUD
 2. npm instal (para instalar as dependências)
 3. npm run dev
 ## Ao digitar esse último comando, o terminal irá fornecer essas informações:

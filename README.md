@@ -1,4 +1,4 @@
-# CRUD de Produtos — Node.js + Express + SQLite + HTML + CSS + JavaScript
+⁸# CRUD de Produtos — Node.js + Express + SQLite + HTML + CSS + JavaScript
 
 Este projeto é uma aplicação web completa de **CRUD (Create, Read, Update, Delete)** de produtos.  
 Permite **cadastrar, listar, editar e excluir produtos** de forma dinâmica, através de uma interface web conectada a um servidor **Node.js + Express**, com persistência de dados em **SQLite**.
@@ -83,11 +83,12 @@ git clone https://github.com/paula-maria/Desafio-CRUD.git
 
 2. digite: cd Desafio-CRUD
 
-3. Instalar dependências. Rode: npm install 
+3. Instalar dependências. Rode: npm install
+   
 Esse comando instalará as dependências listadas em package.json (por exemplo: express, sqlite3, cors, nodemon, etc.).
 Se prefirir instalar tudo manualmente: npm install express sqlite3
 
-4. No terminal, rode o comando: npm run dev
+5. No terminal, rode o comando: npm run dev
 
 ## Ao digitar esse último comando, o terminal irá fornecer essas informações:
 <img width="342" height="207" alt="image" src="https://github.com/user-attachments/assets/f752b064-e1bb-42fb-a7b6-5336365b0774" />
